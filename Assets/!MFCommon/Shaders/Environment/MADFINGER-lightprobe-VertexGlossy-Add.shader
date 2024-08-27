@@ -1,3 +1,6 @@
+// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
+// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
 Shader "MADFINGER/Environment/Lightprobes with Gloss Per-Vertex Additive" {
 Properties {
 	_MainTex ("Base (RGB) Gloss (A)", 2D) = "white" {}
@@ -37,9 +40,9 @@ SubShader {
 	v2f vert (appdata_full v)
 	{
 		v2f o;
-		o.pos = mul(UNITY_MATRIX_MVP, v.vertex);
+		o.pos = UnityObjectToClipPos(v.vertex);
 		o.uv = v.texcoord;
-		float3 worldNormal = mul((float3x3)_Object2World, v.normal);
+		float3 worldNormal = mul((float3x3)unity_ObjectToWorld, v.normal);
 		float3 worldV = normalize(-WorldSpaceViewDir(v.vertex));
 		o.refl = reflect(worldV, worldNormal);
 		

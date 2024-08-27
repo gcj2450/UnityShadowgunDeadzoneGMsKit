@@ -1,3 +1,5 @@
+// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
 
 Shader "MADFINGER/Environment/Blinking emissive" {
 
@@ -61,7 +63,7 @@ SubShader {
 		rnd *= fmod(_Time.y + seed,swOnOff.x + swOnOff.y) < swOnOff.x;
 		
 		o.uv	= TRANSFORM_TEX(v.texcoord.xy,_MainTex);
-		o.pos	= mul(UNITY_MATRIX_MVP, v.vertex);
+		o.pos	= UnityObjectToClipPos(v.vertex);
 		o.color	= v.color * rnd * _IntensityScaleBias.x + _IntensityScaleBias.y;
 			
 		

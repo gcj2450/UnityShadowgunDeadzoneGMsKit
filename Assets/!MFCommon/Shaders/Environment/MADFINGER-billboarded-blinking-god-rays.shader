@@ -1,3 +1,6 @@
+// Upgrade NOTE: replaced '_World2Object' with 'unity_WorldToObject'
+// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
 
 Shader "MADFINGER/Transparent/Blinking GodRays Billboarded" {
 
@@ -100,7 +103,7 @@ SubShader {
 		
 		float3	centerOffs		= float3(float(0.5).xx - v.color.rg,0) * v.texcoord1.xyy;
 		float3	centerLocal	= v.vertex.xyz + centerOffs.xyz;
-		float3	viewerLocal	= mul(_World2Object,float4(_WorldSpaceCameraPos,1));			
+		float3	viewerLocal	= mul(unity_WorldToObject,float4(_WorldSpaceCameraPos,1));			
 		float3	localDir			= viewerLocal - centerLocal;
 				
 		localDir[1] = lerp(0,localDir[1],_VerticalBillboarding);
@@ -130,7 +133,7 @@ SubShader {
 		wave += _Bias;
 		
 		o.uv		= v.texcoord.xy;
-		o.pos	= mul(UNITY_MATRIX_MVP, float4(BBLocalPos,1));
+		o.pos	= UnityObjectToClipPos(float4(BBLocalPos,1));
 		o.color	= CalcFadeOutFactor(localDirLength) * _Color * _Multiplier * wave;
 						
 		return o;

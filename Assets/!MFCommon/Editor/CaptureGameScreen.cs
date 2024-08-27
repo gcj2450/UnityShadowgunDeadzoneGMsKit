@@ -61,7 +61,7 @@ public class CaptureGameScreen : EditorWindow
 		switch( m_ImageType )
 		{
 		case ImageType.SUPERSIZED_PNG:
-			Application.CaptureScreenshot( fileName + ".png", m_Supersize );
+			//ScreenCapture.CaptureScreenshot( fileName + ".png", m_Supersize );
 			Debug.Log( "Supersize : " +m_Supersize );
 			break;
 		default:
@@ -137,16 +137,16 @@ public class CaptureGameScreen : EditorWindow
 		case ImageType.PNG:
 			encodedBytes = texture.EncodeToPNG();
 			break;
-			
-		case ImageType.JPG:
-			JPGEncoder encoder = new JPGEncoder( texture, m_JPEGQuality );
-			encoder.doEncoding();
-			
-			if( encoder.isDone )
-			{
-				encodedBytes = encoder.GetBytes();
-			}
-			break;
+
+			case ImageType.JPG:
+				JPGEncoder encoder = new JPGEncoder(texture, m_JPEGQuality);
+				encoder.doEncoding();
+
+				if (encoder.isDone)
+				{
+					encodedBytes = encoder.GetBytes();
+				}
+				break;
 		}
 		
 		return encodedBytes;

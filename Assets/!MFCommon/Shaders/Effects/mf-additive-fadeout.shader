@@ -1,3 +1,5 @@
+// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
 
 Shader "MADFINGER/Effects/Additive + fadeout" {
 
@@ -54,7 +56,7 @@ SubShader {
 		nfadeout *= ffadeout;
 						
 		o.uv	= TRANSFORM_TEX(v.texcoord, _MainTex);
-		o.pos	= mul(UNITY_MATRIX_MVP,v.vertex);
+		o.pos	= UnityObjectToClipPos(v.vertex);
 		o.color	= nfadeout * _Color * _Multiplier;
 						
 		return o;

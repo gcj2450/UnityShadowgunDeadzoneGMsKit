@@ -1,3 +1,6 @@
+// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
+// Upgrade NOTE: replaced '_World2Object' with 'unity_WorldToObject'
+
 Shader "MADFINGER/Characters/BRDFLit (Supports Backlight) - custom glossingess mask" {
 Properties {
 	_MainTex ("Base (RGB) Gloss (A)", 2D) = "grey" {}
@@ -60,7 +63,7 @@ SubShader {
 	v2f vert (appdata_full v)
 	{
 		float4x4	projTM		= UNITY_MATRIX_P;
-		float3 		worldNormal = mul((float3x3)_Object2World, v.normal);
+		float3 		worldNormal = mul((float3x3)unity_ObjectToWorld, v.normal);
 		float3		viewPos		= mul(UNITY_MATRIX_MV,v.vertex);		
 		float4		projParams	= _Params.y > 0 ? _ProjParams : float4(1,1,1,0);
 		v2f		o;
@@ -87,7 +90,7 @@ SubShader {
 		TANGENT_SPACE_ROTATION;
 		
 		#if 0
-		half3	ldir = mul((float3x3)_World2Object,GetDominantDirLightFromSH());
+		half3	ldir = mul((float3x3)unity_WorldToObject,GetDominantDirLightFromSH());
 		o.ldir = normalize(mul(rotation, ldir));
 		#else
 		o.ldir = mul(rotation,ObjSpaceLightDir(v.vertex));

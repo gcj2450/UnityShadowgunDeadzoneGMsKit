@@ -75,13 +75,13 @@ public class uLinkClientGUI : uLink.MonoBehaviour
 
 	void Awake()
 	{
-#if !UNITY_2_6 && !UNITY_2_6_1
-		if (Application.webSecurityEnabled)
-		{
-			Security.PrefetchSocketPolicy(uLink.NetworkUtility.ResolveAddress(quickHost).ToString(), 843);
-			Security.PrefetchSocketPolicy(uLink.MasterServer.ipAddress, 843);
-		}
-#endif
+//#if !UNITY_2_6 && !UNITY_2_6_1
+//		if (Application.webSecurityEnabled)
+//		{
+//			Security.PrefetchSocketPolicy(uLink.NetworkUtility.ResolveAddress(quickHost).ToString(), 843);
+//			Security.PrefetchSocketPolicy(uLink.MasterServer.ipAddress, 843);
+//		}
+//#endif
 
 		Application.targetFrameRate = targetFrameRate;
 
@@ -353,7 +353,7 @@ public class uLinkClientGUI : uLink.MonoBehaviour
 			GUILayout.FlexibleSpace();
 			GUILayout.EndHorizontal();
 		}
-		else if (selectedGrid == 1 && (Application.platform == RuntimePlatform.WindowsWebPlayer || Application.platform == RuntimePlatform.OSXWebPlayer))
+		else if (selectedGrid == 1 && (Application.platform == RuntimePlatform.WebGLPlayer))
 		{
 			GUILayout.BeginHorizontal();
 			GUILayout.FlexibleSpace();

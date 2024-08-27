@@ -33,7 +33,7 @@ public struct PerkInfo
 
 	uint m_Cipher1;
 
-	uint Cipher1
+	public uint Cipher1
 	{
 		get { return m_Cipher1; }
 		set { m_Cipher1 = value; }
@@ -52,13 +52,13 @@ public struct PerkInfo
 	}
 
 	//ctor
-	public PerkInfo(E_PerkID perkId)
-	{
-		Cipher1 = (uint)(new System.Random(Time.frameCount).Next());
-		CipheredModifier = Modifier; //cipher the value
+//	public PerkInfo(E_PerkID perkId)
+//	{
+//		Cipher1 = (uint)(new System.Random(Time.frameCount).Next());
+//		CipheredModifier = Modifier; //cipher the value
 
-//		Debug.Log ("PERK: id=" + id + ", Modifier=" + Modifier + ", m_CipheredModifier=" + m_CipheredModifier + ", CipheredModifier=" + CipheredModifier + ", Cipher=" + Cipher1);
-	}
+////		Debug.Log ("PERK: id=" + id + ", Modifier=" + Modifier + ", m_CipheredModifier=" + m_CipheredModifier + ", CipheredModifier=" + CipheredModifier + ", Cipher=" + Cipher1);
+//	}
 }
 
 [Serializable]
@@ -92,10 +92,12 @@ public class ComponentGadgets : MonoBehaviour
 		Owner.BlackBoard.ActionHandler += HandleAction;
 
 		Gadgets = new Dictionary<E_ItemID, Item>();
-		Perk = new PerkInfo(E_PerkID.None);
+		Perk = new PerkInfo();
+        Perk.Cipher1 = (uint)(new System.Random(Time.frameCount).Next());
+        Perk.CipheredModifier = Perk.Modifier; //cipher the value
 	}
 
-	void Activate()
+    void Activate()
 	{
 		PlayerPersistantInfo ppi = PPIManager.Instance.GetPPI(Owner.NetworkView.owner);
 

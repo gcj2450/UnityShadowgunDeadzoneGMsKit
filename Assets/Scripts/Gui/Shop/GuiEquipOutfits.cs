@@ -121,7 +121,7 @@ public class CSkinModels
 	{
 		if (m_ActiveModel != null)
 		{
-			Transform headTr = m_ActiveModel.transform.FindChild("pelvis/stomach/Ribs/chest/neck/head/Hat_Target");
+			Transform headTr = m_ActiveModel.transform.Find("pelvis/stomach/Ribs/chest/neck/head/Hat_Target");
 			return headTr;
 		}
 		else
@@ -132,7 +132,7 @@ public class CSkinModels
 	{
 		if (m_ActiveModel != null)
 		{
-			Transform tr = m_ActiveModel.transform.FindChild("pelvis/stomach/Ribs/chest/Rshoulder/Rarm/Rforearm/Rwrist/Rweaponholder");
+			Transform tr = m_ActiveModel.transform.Find("pelvis/stomach/Ribs/chest/Rshoulder/Rarm/Rforearm/Rwrist/Rweaponholder");
 			return tr;
 		}
 		else

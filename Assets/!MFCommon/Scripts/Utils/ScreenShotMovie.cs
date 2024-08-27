@@ -104,7 +104,7 @@ public class ScreenShotMovie : MonoBehaviour
 		string name = string.Format("{0}/{1:D04} shot.png", m_RealFolder, Time.frameCount);
 
 		// Capture the screenshot
-		Application.CaptureScreenshot(name, m_SuperSize);
+		ScreenCapture.CaptureScreenshot(name, m_SuperSize);
 	}
 
 	void OnGUI()

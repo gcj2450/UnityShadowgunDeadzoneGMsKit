@@ -27,9 +27,9 @@ public class MFColorCorrectionEffectSimple : ImageEffectBase
 		HACK_CompensateImageFlip = true;
 #endif
 
-		// No need to compensate on OSX in general
-		if ((Application.platform == RuntimePlatform.OSXEditor) || (Application.platform == RuntimePlatform.OSXWebPlayer))
-		{
+        // No need to compensate on OSX in general
+        if ((Application.platform == RuntimePlatform.OSXEditor) || (Application.platform == RuntimePlatform.WebGLPlayer))
+        {
 			HACK_CompensateImageFlip = false;
 		}
 	}

@@ -16,20 +16,20 @@ using System;
 
 public class WebUtils
 {
-	public static Dictionary<string, string> GetQueryParams()
-	{
-		string src = Application.srcValue;
+	//public static Dictionary<string, string> GetQueryParams()
+	//{
+	//	string src = Application.srcValue;
 
-		if (src == ""
-			|| src == null
-			|| src.IndexOf("?") == -1
-			|| src.IndexOf("?") == src.Length - 1)
-			return new Dictionary<string, string>();
+	//	if (src == ""
+	//		|| src == null
+	//		|| src.IndexOf("?") == -1
+	//		|| src.IndexOf("?") == src.Length - 1)
+	//		return new Dictionary<string, string>();
 
-		src = src.Substring(src.IndexOf("?") + 1);
+	//	src = src.Substring(src.IndexOf("?") + 1);
 
-		return ParseQueryString(src);
-	}
+	//	return ParseQueryString(src);
+	//}
 
 	public static Dictionary<string, string> ParseQueryString(string query)
 	{
@@ -70,15 +70,15 @@ public class WebUtils
 		return parameters;
 	}
 
-	public static string GetFilename()
-	{
-		string src = Application.srcValue;
+	//public static string GetFilename()
+	//{
+	//	string src = Application.srcValue;
 
-		if (src.IndexOf("?") >= 0)
-			return src.Substring(0, src.IndexOf("?"));
+	//	if (src.IndexOf("?") >= 0)
+	//		return src.Substring(0, src.IndexOf("?"));
 
-		return src;
-	}
+	//	return src;
+	//}
 
 	public static string GetDomain()
 	{

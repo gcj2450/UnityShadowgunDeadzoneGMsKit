@@ -1,3 +1,6 @@
+// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
+// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
 Shader "MADFINGER/Characters/Character shadow plane - sphere AO" {
 Properties {
 	_Sphere0("S0",	Vector) = (0,0,0,0)
@@ -57,11 +60,11 @@ SubShader {
 	v2f vert (appdata_full v)
 	{
 		v2f			o;
-		float3		wrldPos 	= mul(_Object2World,v.vertex);
-		float3		wrldNormal	= mul((float3x3)_Object2World,v.normal);
+		float3		wrldPos 	= mul(unity_ObjectToWorld,v.vertex);
+		float3		wrldNormal	= mul((float3x3)unity_ObjectToWorld,v.normal);
 		float		ao;
 
-		o.pos	= mul(UNITY_MATRIX_MVP, v.vertex);
+		o.pos	= UnityObjectToClipPos(v.vertex);
 
 #if defined(USE_PERPIXEL_AO)
 		o.worldPos = wrldPos;

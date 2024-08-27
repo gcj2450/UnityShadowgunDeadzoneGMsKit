@@ -120,7 +120,7 @@ public class GUIBase_MultiSprite : GUIBase_Callback
 				};
 			}
 
-			Object.DestroyImmediate(sprite.gameObject);
+			//Object.DestroyImmediate(sprite.gameObject);
 		}
 	}
 

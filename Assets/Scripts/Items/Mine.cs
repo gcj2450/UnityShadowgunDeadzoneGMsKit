@@ -82,8 +82,8 @@ public class Mine : uLink.MonoBehaviour
 		GameObject = gameObject;
 		NetworkView = networkView;
 
-		GameObjectMine = Transform.FindChild("MINA_top").gameObject;
-		GameObjectDecal = Transform.FindChild("destroy_plane").gameObject;
+		GameObjectMine = Transform.Find("MINA_top").gameObject;
+		GameObjectDecal = Transform.Find("destroy_plane").gameObject;
 		CheckDistance = m_DetectionDistance*m_DetectionDistance;
 
 		//State = E_State.Activating;

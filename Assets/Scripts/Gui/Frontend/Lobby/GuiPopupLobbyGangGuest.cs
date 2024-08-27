@@ -357,12 +357,12 @@ public class GuiPopupLobbyGangGuest : GuiPopup
 				ListRow row = new ListRow()
 				{
 					Root = root,
-					Name = trans.FindChild(LISTITEM_NAME).GetComponent<GUIBase_Label>(),
-					Status = trans.FindChild(LISTITEM_STATUS).GetComponent<GUIBase_Label>(),
-					RankValue = trans.FindChild(LISTITEM_RANKVALUE).GetComponent<GUIBase_Label>(),
-					RankIcon = trans.FindChild(LISTITEM_RANKICON).GetComponent<GUIBase_MultiSprite>(),
-					WaitingBg = trans.FindChild(LISTITEM_WAITINGBG).GetComponent<GUIBase_Sprite>(),
-					ReadyBg = trans.FindChild(LISTITEM_READYBG).GetComponent<GUIBase_Sprite>(),
+					Name = trans.Find(LISTITEM_NAME).GetComponent<GUIBase_Label>(),
+					Status = trans.Find(LISTITEM_STATUS).GetComponent<GUIBase_Label>(),
+					RankValue = trans.Find(LISTITEM_RANKVALUE).GetComponent<GUIBase_Label>(),
+					RankIcon = trans.Find(LISTITEM_RANKICON).GetComponent<GUIBase_MultiSprite>(),
+					WaitingBg = trans.Find(LISTITEM_WAITINGBG).GetComponent<GUIBase_Sprite>(),
+					ReadyBg = trans.Find(LISTITEM_READYBG).GetComponent<GUIBase_Sprite>(),
 				};
 				m_Rows[idx] = row;
 			}

@@ -296,7 +296,7 @@ public class LoginScreen : GuiScreen
 		
 		Event e = Event.current;
 
-		if (e.keyCode == KeyCode.Return && e.type == EventType.keyUp && logindataValid) 
+		if (e.keyCode == KeyCode.Return && e.type == EventType.KeyUp && logindataValid) 
 			Delegate_Login(m_LoginButton.Widget);
 		else
 			base.OnGUI();

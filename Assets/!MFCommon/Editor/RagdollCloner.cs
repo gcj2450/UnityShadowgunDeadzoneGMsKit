@@ -182,7 +182,7 @@ public class RagdollCloner : EditorWindow
 		//recurse to children
 		foreach (Transform child in baseObj)
 		{
-			Transform targetChild = targetObj.FindChild( child.name );
+			Transform targetChild = targetObj.Find( child.name );
 			
 			if (targetChild)
 				CloneRagdoll(child, targetChild);

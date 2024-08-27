@@ -1,3 +1,6 @@
+// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
+// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
 
 Shader "MADFINGER/Particles/Additive + fadeout" {
 
@@ -33,13 +36,13 @@ SubShader {
 	v2f vert (appdata_full v)
 	{
 		v2f 	o;
-		float3	wrldNormal	= normalize(mul((float3x3)_Object2World, v.normal));
-		float3	wrldPos		= mul(_Object2World,v.vertex);
+		float3	wrldNormal	= normalize(mul((float3x3)unity_ObjectToWorld, v.normal));
+		float3	wrldPos		= mul(unity_ObjectToWorld,v.vertex);
 		float3	toViewer	= normalize(_WorldSpaceCameraPos  - wrldPos);
 		float	fadeout		= saturate(4 * abs(dot(wrldNormal,toViewer)));
 		
 				
-		o.pos	= mul(UNITY_MATRIX_MVP, v.vertex); 
+		o.pos	= UnityObjectToClipPos(v.vertex); 
 //		o.color	= fixed4(_Color.xyz,fadeout);
 		o.color	= fixed4(_Color.xyz,1);
 		o.uv	= v.texcoord;

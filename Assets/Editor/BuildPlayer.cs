@@ -73,20 +73,20 @@ public partial class BuildPlayer
 //		case BuildTarget.MetroPlayerX64:           return BuildTargetGroup.Unknown;
 //		case BuildTarget.MetroPlayerX86:           return BuildTargetGroup.Unknown;
 		case BuildTarget.WSAPlayer:              return BuildTargetGroup.Unknown;
-		case BuildTarget.WP8Player:                return BuildTargetGroup.Unknown;
+		//case BuildTarget.WP8Player:                return BuildTargetGroup.Unknown;
 //		case BuildTarget.NaCl:                     return BuildTargetGroup.NaCl;
-		case BuildTarget.PS3:                      return BuildTargetGroup.PS3;
-		case BuildTarget.StandaloneGLESEmu:        return BuildTargetGroup.Standalone;
+		//case BuildTarget.PS3:                      return BuildTargetGroup.PS3;
+		//case BuildTarget.StandaloneGLESEmu:        return BuildTargetGroup.Standalone;
 		case BuildTarget.StandaloneLinux:          return BuildTargetGroup.Standalone;
 		case BuildTarget.StandaloneLinux64:        return BuildTargetGroup.Standalone;
 		case BuildTarget.StandaloneLinuxUniversal: return BuildTargetGroup.Standalone;
-		case BuildTarget.StandaloneOSXIntel:       return BuildTargetGroup.Standalone;
+		//case BuildTarget.StandaloneOSXIntel:       return BuildTargetGroup.Standalone;
 		case BuildTarget.StandaloneWindows:        return BuildTargetGroup.Standalone;
 		case BuildTarget.StandaloneWindows64:      return BuildTargetGroup.Standalone;
-		case BuildTarget.WebPlayer:                return BuildTargetGroup.WebPlayer;
-		case BuildTarget.WebPlayerStreamed:        return BuildTargetGroup.WebPlayer;
+		//case BuildTarget.WebPlayer:                return BuildTargetGroup.WebPlayer;
+		//case BuildTarget.WebPlayerStreamed:        return BuildTargetGroup.WebPlayer;
 //		case BuildTarget.Wii:                      return BuildTargetGroup.Wii;
-		case BuildTarget.XBOX360:                  return BuildTargetGroup.XBOX360;
+		//case BuildTarget.XBOX360:                  return BuildTargetGroup.XBOX360;
 		default:                                   return BuildTargetGroup.Unknown;
 		}
 	}

@@ -1,3 +1,6 @@
+// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
+// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
 Shader "MADFINGER/FX/Water2" {
 Properties {
 	_EnvTex ("Cube env tex", CUBE) = "black" {}	
@@ -69,7 +72,7 @@ SubShader {
 	{
 		v2f 	o;
 		
-		float3	worldNormal = normalize(mul((float3x3)_Object2World,v.normal));
+		float3	worldNormal = normalize(mul((float3x3)unity_ObjectToWorld,v.normal));
 		float3	viewDir		= normalize(WorldSpaceViewDir(v.vertex));
 		float3	viewRefl	= reflect(-viewDir, worldNormal);
 		float	facing		= 1 - saturate(dot(viewDir,worldNormal));
@@ -77,7 +80,7 @@ SubShader {
 		float3	color		= lerp(_DeepColor,_ShallowColor,facing);
 
 		
-		o.pos	= mul(UNITY_MATRIX_MVP,v.vertex);
+		o.pos	= UnityObjectToClipPos(v.vertex);
 
 		o.refl	= viewRefl;
 		o.refl.x = -o.refl.x;
@@ -89,7 +92,7 @@ SubShader {
 		o.normal 	= worldNormal;
 		o.viewDir	= WorldSpaceViewDir(v.vertex);
 		
-		float3 worldPos = mul(_Object2World,v.vertex);
+		float3 worldPos = mul(unity_ObjectToWorld,v.vertex);
 		
 		o.uv.xy = worldPos.xz * _Params2.x + frac(_Time.yy * _Params2.y * normalize(float2(-0.3,0.7)));
 		o.uv.zw = worldPos.xz * _Params2.x + frac(_Time.yy * _Params2.y * normalize(float2(0.5,0.2)) * 0.5);

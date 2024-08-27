@@ -17,7 +17,7 @@ using System.Collections.Generic;
 [RequireComponent(typeof (Animation))]
 [RequireComponent(typeof (AudioSource))]
 [RequireComponent(typeof (Rigidbody))]
-[RequireComponent(typeof (NavMeshAgent))]
+[RequireComponent(typeof (UnityEngine.AI.NavMeshAgent))]
 public class Spider : Agent
 {
 	[System.Serializable]
@@ -61,7 +61,7 @@ public class Spider : Agent
 	public AnimInfo m_AnimInfo;
 	public SoundInfo m_SoundInfo;
 
-	NavMeshAgent m_NavMeshAgent;
+	UnityEngine.AI.NavMeshAgent m_NavMeshAgent;
 	Vector3 m_MoveTargetPos;
 	float m_AgentRadius = 0.5f;
 
@@ -122,7 +122,7 @@ public class Spider : Agent
 		m_DetectionDistance = 500.0f;
 		//m_DefaultDetectionDistance 	= m_DefaultHitPoints;
 
-		m_NavMeshAgent = GetComponentInChildren<NavMeshAgent>();
+		m_NavMeshAgent = GetComponentInChildren<UnityEngine.AI.NavMeshAgent>();
 		m_Animations = GetComponent<Animation>();
 		m_Animations.SyncLayer(0);
 

@@ -781,7 +781,7 @@ public class Game : MonoBehaviour
 		// this method is called with focus == false.
 		// Focus must be set to true otherwise InputManager is disabled
 		// and mouse contol is not working.
-		if (Application.platform == RuntimePlatform.OSXWebPlayer)
+		if (Application.platform == RuntimePlatform.WebGLPlayer)
 		{
 			if (Screen.fullScreen)
 			{

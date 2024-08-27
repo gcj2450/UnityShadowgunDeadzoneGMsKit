@@ -128,3 +128,7 @@ local.properties
 # System Files
 .DS_Store
 Thumbs.db
+/Temp
+/Library
+/obj
+/Library

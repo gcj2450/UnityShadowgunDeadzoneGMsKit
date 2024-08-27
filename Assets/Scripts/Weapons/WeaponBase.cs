@@ -245,7 +245,7 @@ public abstract class WeaponBase : MonoBehaviour
 		Audio = GetComponent<AudioSource>();
 		RBody = GetComponent<Rigidbody>();
 //		Renderer		= renderer;
-		TransformShot = transform.FindChild("Shoot");
+		TransformShot = transform.Find("Shoot");
 	}
 
 	// -----

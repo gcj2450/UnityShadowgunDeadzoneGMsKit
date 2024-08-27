@@ -1,3 +1,7 @@
+// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
+// Upgrade NOTE: replaced '_World2Object' with 'unity_WorldToObject'
+// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
 Shader "MADFINGER/FX/Water" {
 Properties {
 	_EnvTex ("Cube env tex", CUBE) = "black" {}	
@@ -66,7 +70,7 @@ SubShader {
 	{
 		v2f 	o;
 		
-		float3	worldNormal = mul((float3x3)_Object2World, normalize(v.normal));
+		float3	worldNormal = mul((float3x3)unity_ObjectToWorld, normalize(v.normal));
 		float3	viewDir		= normalize(WorldSpaceViewDir(v.vertex));
 		float3	viewRefl	= reflect(-viewDir, worldNormal);
 		float	facing		= 1 - saturate(dot(viewDir,worldNormal));
@@ -78,8 +82,8 @@ SubShader {
 		float4	waterPlane0		= float4(0,1,0,0);
 		float4	waterPlane1		= float4(0,1,0,1);
 		
-		float3	viewDirLocal	= mul((float3x3)_World2Object,viewDir);
-		float3	viewPosLocal	= mul(_World2Object,float4(_WorldSpaceCameraPos,1));				
+		float3	viewDirLocal	= mul((float3x3)unity_WorldToObject,viewDir);
+		float3	viewPosLocal	= mul(unity_WorldToObject,float4(_WorldSpaceCameraPos,1));				
 		
 		float 	isect0			= PlaneRayISec(waterPlane0,viewPosLocal,viewDirLocal);
 		float 	isect1			= PlaneRayISec(waterPlane1,viewPosLocal,viewDirLocal);
@@ -97,7 +101,7 @@ SubShader {
 
 		
 		
-		o.pos	= mul(UNITY_MATRIX_MVP,v.vertex);
+		o.pos	= UnityObjectToClipPos(v.vertex);
 		o.refl	= viewRefl;
 		o.color	= fixed4(color.xyz,fresnel);
 		o.color2 = facing + _Params.z;

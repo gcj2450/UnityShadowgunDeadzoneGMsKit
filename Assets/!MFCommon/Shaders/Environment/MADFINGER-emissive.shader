@@ -1,3 +1,5 @@
+// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
 
 Shader "MADFINGER/Environment/Emissive" {
 
@@ -36,7 +38,7 @@ SubShader {
 		v2f 		o;
 		
 		o.uv	= TRANSFORM_TEX(v.texcoord.xy,_MainTex);
-		o.pos	= mul(UNITY_MATRIX_MVP, v.vertex);
+		o.pos	= UnityObjectToClipPos(v.vertex);
 		o.color	= v.color * _IntensityScaleBias.x + _IntensityScaleBias.y;
 			
 		return o;

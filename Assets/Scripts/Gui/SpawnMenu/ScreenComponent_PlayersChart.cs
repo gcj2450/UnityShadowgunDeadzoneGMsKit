@@ -120,13 +120,13 @@ public class ScreenComponent_PlayersChart : ScreenComponent
 				case RuntimePlatform.OSXPlayer:
 					platform = "Plat_Mac";
 					break;
-				case RuntimePlatform.WindowsWebPlayer:
-					platform = "Plat_Fb";
-					break;
-				case RuntimePlatform.OSXWebPlayer:
-					platform = "Plat_Fb";
-					break;
-				default:
+					case RuntimePlatform.WebGLPlayer:
+						platform = "Plat_Fb";
+						break;
+					//case RuntimePlatform.OSXWebPlayer:
+					//	platform = "Plat_Fb";
+					//	break;
+					default:
 					platform = "Plat_Skull";
 					break;
 				}

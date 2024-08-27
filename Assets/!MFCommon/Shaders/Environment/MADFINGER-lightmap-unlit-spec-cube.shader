@@ -1,3 +1,6 @@
+// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
+// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
 // Upgrade NOTE: commented out 'float4 unity_LightmapST', a built-in variable
 // Upgrade NOTE: commented out 'sampler2D unity_Lightmap', a built-in variable
 // Upgrade NOTE: replaced tex2D unity_Lightmap with UNITY_SAMPLE_TEX2D
@@ -35,10 +38,10 @@ SubShader {
 	sampler2D _MainTex;
 	samplerCUBE _SpecCubeTex;
 
-	#ifndef LIGHTMAP_OFF
-	// float4 unity_LightmapST;
-	// sampler2D unity_Lightmap;
-	#endif
+	// #ifndef LIGHTMAP_OFF
+	// // float4 unity_LightmapST;
+	// // sampler2D unity_Lightmap;
+	// #endif
 
 	float4	_ScrollingSpeed;
 	float4	_SpecularStrength;
@@ -49,9 +52,9 @@ SubShader {
 		float4 pos : SV_POSITION;
 		float2 uv : TEXCOORD0;
 
-		#ifndef LIGHTMAP_OFF
+		// #ifndef LIGHTMAP_OFF
 		float2 lmap : TEXCOORD1;
-		#endif
+		// #endif
 		
 #ifndef UNITY_SHADER_DETAIL_LOW		
 		float3 refl : TEXCOORD2;
@@ -66,18 +69,18 @@ SubShader {
 	{
 		v2f o;
 
-		o.pos	= mul(UNITY_MATRIX_MVP, v.vertex);
+		o.pos	= UnityObjectToClipPos(v.vertex);
 		o.uv 	= v.texcoord + frac(_ScrollingSpeed * _Time.y);
 
 #ifndef UNITY_SHADER_DETAIL_LOW
-		float3 worldNormal = normalize(mul((float3x3)_Object2World, v.normal));		
+		float3 worldNormal = normalize(mul((float3x3)unity_ObjectToWorld, v.normal));		
 
 		o.refl = reflect(-WorldSpaceViewDir(v.vertex), worldNormal);
 #endif
 		
-#ifndef LIGHTMAP_OFF
+// #ifndef LIGHTMAP_OFF
 		o.lmap = v.texcoord1.xy * unity_LightmapST.xy + unity_LightmapST.zw;
-#endif
+// #endif
 		
 #if defined(UNITY_SHADER_ENABLE_VOLUME_FOG)		
 		o.col = o.pos.w * UNITY_SHADER_VOLUME_FOG_DIST_SCALE;

@@ -1,3 +1,6 @@
+// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
+// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
 // - Unlit
 // - Per-vertex gloss
 
@@ -44,10 +47,10 @@ SubShader {
 	v2f vert (appdata_full v)
 	{
 		v2f o;
-		o.pos = mul(UNITY_MATRIX_MVP, v.vertex);
+		o.pos = UnityObjectToClipPos(v.vertex);
 		o.uv = v.texcoord;
 		
-		float3 worldNormal = mul((float3x3)_Object2World, v.normal);		
+		float3 worldNormal = mul((float3x3)unity_ObjectToWorld, v.normal);		
 		float3 viewNormal = mul((float3x3)UNITY_MATRIX_MV, v.normal);
 		float4 viewPos = mul(UNITY_MATRIX_MV, v.vertex);
 		float3 viewDir = float3(0,0,1);

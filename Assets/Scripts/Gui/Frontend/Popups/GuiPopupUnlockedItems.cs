@@ -73,11 +73,11 @@ public class GuiPopupUnlockedItems : GuiPopup
 
 		for (int idx = 0; idx < MAX_ITEMS; ++idx)
 		{
-			GUIBase_Widget root = itemsTrans.FindChild(string.Format(ITEM_NAME, idx)).GetComponent<GUIBase_Widget>();
+			GUIBase_Widget root = itemsTrans.Find(string.Format(ITEM_NAME, idx)).GetComponent<GUIBase_Widget>();
 			Transform rootTrans = root.transform;
 
-			Transform image = rootTrans.FindChild(ITEM_IMAGE);
-			Transform label = rootTrans.FindChild(ITEM_LABEL);
+			Transform image = rootTrans.Find(ITEM_IMAGE);
+			Transform label = rootTrans.Find(ITEM_LABEL);
 
 			Item item = new Item()
 			{

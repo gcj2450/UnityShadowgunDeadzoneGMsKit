@@ -1,3 +1,5 @@
+// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
 // Visualise Spherical Harmonics
 // sampled with vertex normal
 Shader "Hidden/SH" {
@@ -24,7 +26,7 @@ v2f vert (appdata_base v)
     v2f o;
     half4 pos = v.vertex;
     pos.xyz *= _HandleSize;
-    o.pos = mul (UNITY_MATRIX_MVP, pos);
+    o.pos = UnityObjectToClipPos (pos);
     o.color = ShadeSH9(half4(v.normal, 1));
     return o;
 }
@@ -58,7 +60,7 @@ v2f vert (appdata_base v)
     v2f o;
     half4 pos = v.vertex;
     pos.xyz *= _HandleSize;
-    o.pos = mul (UNITY_MATRIX_MVP, pos);
+    o.pos = UnityObjectToClipPos (pos);
     o.color = ShadeSH9(half4(v.normal, 1));
     return o;
 }

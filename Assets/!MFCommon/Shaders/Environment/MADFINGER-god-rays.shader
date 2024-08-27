@@ -1,3 +1,5 @@
+// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
 
 Shader "MADFINGER/Transparent/GodRays" {
 
@@ -62,7 +64,7 @@ SubShader {
 		vpos.xyz -=   v.normal * saturate(1 - nfadeout) * v.color.a * _ContractionAmount;
 						
 		o.uv		= v.texcoord.xy;
-		o.pos	= mul(UNITY_MATRIX_MVP, vpos);
+		o.pos	= UnityObjectToClipPos(vpos);
 		o.color	= nfadeout * v.color * _Multiplier;
 						
 		return o;

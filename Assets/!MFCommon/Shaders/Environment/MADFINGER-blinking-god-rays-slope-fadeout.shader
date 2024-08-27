@@ -1,3 +1,6 @@
+// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
+// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
 
 Shader "MADFINGER/Transparent/Blinking GodRays - slope fadeout" {
 
@@ -70,8 +73,8 @@ SubShader {
 		float		noiseWave	= _NoiseAmount * noise + (1 - _NoiseAmount);
 		float		distScale	= min(max(dist - _SizeGrowStartDist,0) / _SizeGrowEndDist,1);
 		
-		float3		wrldNormal	= normalize(mul((float3x3)_Object2World, v.normal));	
-		float3		wrldPos		= mul(_Object2World,v.vertex);
+		float3		wrldNormal	= normalize(mul((float3x3)unity_ObjectToWorld, v.normal));	
+		float3		wrldPos		= mul(unity_ObjectToWorld,v.vertex);
 		float3		toViewer	= normalize(_WorldSpaceCameraPos  - wrldPos);
 		float		slopeFadeout= saturate(abs(dot(wrldNormal,toViewer)));		
 			
@@ -93,7 +96,7 @@ SubShader {
 //		mdlPos.xyz += distScale * v.normal;
 				
 		o.uv	= v.texcoord.xy;
-		o.pos	= mul(UNITY_MATRIX_MVP, mdlPos);
+		o.pos	= UnityObjectToClipPos(mdlPos);
 		o.color = nfadeout * _Color * _Multiplier * wave * slopeFadeout;
 						
 		return o;

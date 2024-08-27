@@ -1,3 +1,5 @@
+// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
+
 Shader "MADFINGER/Characters/BRDFLit + Cloak FX" {
 Properties {
 	_MainTex ("Base (RGB) Gloss (A)", 2D) = "grey" {}
@@ -68,7 +70,7 @@ struct Input
 
  void vert (inout appdata_full v,out Input o) 
  {
-	float3	wrldNormal	= mul((float3x3)_Object2World,v.normal);
+	float3	wrldNormal	= mul((float3x3)unity_ObjectToWorld,v.normal);
 	float3	SHLighting	= ShadeSH9(float4(wrldNormal,1));
 	float	time		= _Time.y;
  	

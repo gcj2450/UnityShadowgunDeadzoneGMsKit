@@ -104,12 +104,12 @@ public class uLinkOverrideSettings : MonoBehaviour
 
 		protected override void Apply()
 		{
-#if !UNITY_2_6 && !UNITY_2_6_1
-			if (Application.webSecurityEnabled)
-			{
-				Security.PrefetchSocketPolicy(ipAddress, 843);
-			}
-#endif
+//#if !UNITY_2_6 && !UNITY_2_6_1
+//			if (Application.webSecurityEnabled)
+//			{
+//				Security.PrefetchSocketPolicy(ipAddress, 843);
+//			}
+//#endif
 
 			uLink.MasterServer.comment = comment;
 			uLink.MasterServer.dedicatedServer = dedicatedServer;

@@ -1,3 +1,6 @@
+// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
+// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
 // Upgrade NOTE: commented out 'float4 unity_LightmapST', a built-in variable
 
 Shader "MADFINGER/Environment/Cubemap specular + Custom Lightmap + fake bump" {
@@ -57,14 +60,14 @@ SubShader {
 	{
 		v2f o;
 
-		o.pos	= mul(UNITY_MATRIX_MVP, v.vertex);
+		o.pos	= UnityObjectToClipPos(v.vertex);
 		o.uv.xy	= v.texcoord + frac(_ScrollingSpeed * _Time.y);
 		o.uv.zw = float2(2,1) * _Params.x;
 
 		
 
 #ifndef UNITY_SHADER_DETAIL_LOW
-		float3 worldNormal = normalize(mul((float3x3)_Object2World, v.normal));		
+		float3 worldNormal = normalize(mul((float3x3)unity_ObjectToWorld, v.normal));		
 
 		o.refl = reflect(-WorldSpaceViewDir(v.vertex), worldNormal);
 #endif

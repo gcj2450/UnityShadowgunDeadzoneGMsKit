@@ -144,7 +144,7 @@ public class Mission : MonoBehaviour
 		// When the application is switched to the fullscreen mode (web player on Mac OS X)
 		// this method is called with focus == false.
 		// Focus must be set to true.
-		if (Application.platform == RuntimePlatform.OSXWebPlayer)
+		if (Application.platform == RuntimePlatform.WebGLPlayer)
 		{
 			if (Screen.fullScreen)
 			{

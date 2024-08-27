@@ -521,7 +521,7 @@ public class SlotMachine : MonoBehaviour
 		public Slot(GameObject obj)
 		{
 			m_Mesh = obj.GetComponent<MeshRenderer>();
-			m_Glow = obj.transform.FindChild("glow").gameObject;
+			m_Glow = obj.transform.Find("glow").gameObject;
 
 			Shine = false;
 		}
