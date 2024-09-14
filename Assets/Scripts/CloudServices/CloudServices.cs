@@ -2922,7 +2922,7 @@ public class CloudServices : MonoBehaviour
 
 	IEnumerator ProcessGetWebRequest(string url, AsyncOpResult result)
 	{
-//		Debug.Log("WWW get: " + url);
+		Debug.Log("WWW get: " + url);
 
 		if (UnityEngine.Random.Range(0.0f, 1.0f) < m_DbgIntroducedFailureRate)
 		{

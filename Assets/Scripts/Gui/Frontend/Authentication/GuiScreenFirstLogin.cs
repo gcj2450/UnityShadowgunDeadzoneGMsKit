@@ -273,6 +273,7 @@ public class GuiScreenFirstLogin : GuiScreen
 	{
 		if (string.IsNullOrEmpty(userid) == true && string.IsNullOrEmpty(vendorID) == true)
 		{
+			Debug.Log("AAAAAAA");
 			ShowMessage(MESSAGE_FAILED, true);
 			yield break;
 		}
@@ -308,7 +309,8 @@ public class GuiScreenFirstLogin : GuiScreen
 
 			if (usernameExists.isFailed == true)
 			{
-				ShowMessage(MESSAGE_FAILED, true);
+                Debug.Log("AAAAAAcccccccccA");
+                ShowMessage(MESSAGE_FAILED, true);
 				yield break;
 			}
 
@@ -391,7 +393,8 @@ public class GuiScreenFirstLogin : GuiScreen
 
 			if (availableNames.Count == 0)
 			{
-				ShowMessage(MESSAGE_FAILED, true);
+                Debug.Log("AAAAAAAfffffffff");
+                ShowMessage(MESSAGE_FAILED, true);
 				yield break;
 			}
 
@@ -407,7 +410,8 @@ public class GuiScreenFirstLogin : GuiScreen
 
 			if (success == false)
 			{
-				ShowMessage(MESSAGE_FAILED, true);
+                Debug.Log("AAAAAAAEEEEEEEEEE");
+                ShowMessage(MESSAGE_FAILED, true);
 				yield break;
 			}
 
